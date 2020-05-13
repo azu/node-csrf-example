@@ -1,0 +1,83 @@
+{
+  "name": "csrf-example",
+  "version": "1.0.0",
+  "description": "Node.js express csrf example.",
+  "keywords": [
+    "csrf",
+    "node",
+    "express"
+  ],
+  "homepage": "https://github.com/azu/node-csrf-example",
+  "bugs": {
+    "url": "https://github.com/azu/node-csrf-example/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azu/node-csrf-example.git"
+  },
+  "license": "MIT",
+  "author": "azu",
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
+  "main": "lib/node-csrf-example.js",
+  "types": "lib/node-csrf-example.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "start": "ts-node-dev src/server.ts",
+    "build": "cross-env NODE_ENV=production tsc -p .",
+    "clean": "rimraf lib/",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "prepublish": "npm run --if-present build",
+    "test": "mocha \"test/**/*.ts\"",
+    "watch": "tsc -p . --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": false,
+    "tabWidth": 4
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/csurf": "^1.9.36",
+    "@types/express": "^4.17.6",
+    "@types/express-session": "^1.17.0",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.1",
+    "@types/prettier": "^2.0.0",
+    "@types/rimraf": "^3.0.0",
+    "cross-env": "^7.0.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "mocha": "^7.1.2",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "ts-node-test-register": "^8.0.1",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "csurf": "^1.11.0",
+    "express": "^4.17.1",
+    "express-hbs": "^2.3.3",
+    "express-session": "^1.17.1"
+  }
+}

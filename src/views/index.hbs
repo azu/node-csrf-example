@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSRF Example</title>
+</head>
+<body>
+{{#if isLogin }}
+    <p>Hello {{userName}}</p>
+    <p>Thanks to register!</p>
+
+    <p>Unregister form</p>
+    <form method="POST" action="/unregister">
+        <label>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+            <input type="submit" value="Unregister"/>
+        </label>
+    </form>
+{{else}}
+    <p>Hello {{userName}}!</p>
+    <p>You can register this service!</p>
+    <p>Register form</p>
+    <form method="POST" action="/register">
+        <label>UserName:
+            <input type="text" name="username"/>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+            <input type="submit" value="Register"/>
+        </label>
+    </form>
+{{/if}}
+</body>
+</html>
