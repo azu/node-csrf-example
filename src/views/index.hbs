@@ -3,30 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>CSRF Example</title>
+    <style>
+        .main {
+            max-width: 720px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-{{#if isLogin }}
-    <p>Hello {{userName}}</p>
-    <p>Thanks to register!</p>
+<main class="main">
+    {{#if isLogin }}
+        <p>Hello {{userName}}!</p>
+        <p>Thanks to register!</p>
 
-    <p>Unregister form</p>
-    <form method="POST" action="/unregister">
-        <label>
-            <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
-            <input type="submit" value="Unregister"/>
-        </label>
-    </form>
-{{else}}
-    <p>Hello {{userName}}!</p>
-    <p>You can register this service!</p>
-    <p>Register form</p>
-    <form method="POST" action="/register">
-        <label>UserName:
-            <input type="text" name="username"/>
-            <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
-            <input type="submit" value="Register"/>
-        </label>
-    </form>
-{{/if}}
+        <h1>Unregister form</h1>
+        <form method="POST" action="{{baseURL}}/unregister">
+            <label>
+                <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+                <input type="submit" value="Unregister"/>
+            </label>
+        </form>
+    {{else}}
+        <p>You can register this service!</p>
+        <h1>Register form</h1>
+        <form method="POST" action="{{baseURL}}/register">
+            <label>UserName:
+                <input type="text" name="username"/>
+                <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+                <input type="submit" value="Register"/>
+            </label>
+        </form>
+    {{/if}}
+</main>
 </body>
 </html>

@@ -4,13 +4,23 @@ Node.js express csrf example.
 
 ## Install
 
-Install with [npm](https://www.npmjs.com/):
-
-    npm install csrf-example
+    yarn install
 
 ## Usage
 
-- [ ] Write usage instructions
+    yarn start
+    
+### CSRF version
+
+Access to http://localhost:8080/
+
+### Weak Version
+
+Access to http://localhost:8080/weak 
+
+It does not implment CSRF protection
+
+### CSRF testing tools
 
 ## Changelog
 
